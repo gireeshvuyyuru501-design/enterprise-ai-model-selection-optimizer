@@ -1,87 +1,198 @@
-# Enterprise AI Model Selection Optimizer — Phase 3
+# 🚀 Enterprise AI Model Selection Optimizer
 
-Phase 3 extends the Phase 2 dashboard with PostgreSQL persistence, SQLAlchemy ORM,
-model catalog CRUD APIs, database seeding, and optimization history.
+An enterprise-grade AI platform that intelligently recommends the best Large Language Model (LLM) for enterprise workloads using multiple optimization criteria including cost, latency, quality, privacy, deployment strategy, and business requirements.
 
-## Phase 3 features
+---
 
-- PostgreSQL database
-- SQLAlchemy 2 ORM
-- Persistent AI model catalog
-- Create, read, update, and delete model APIs
-- Persistent optimization history
-- Automatic table creation
-- Seed script
-- Existing Phase 2 dashboard and charts
+# Architecture
 
-## Important
-
-The included model names and metrics are synthetic demonstration data.
-
-## Option A — Start PostgreSQL with Docker
-
-From the project folder:
-
-```powershell
-docker compose up -d postgres
+```
+                +----------------------+
+                |    Frontend UI       |
+                | HTML/CSS/JavaScript  |
+                +----------+-----------+
+                           |
+                           |
+                    FastAPI REST APIs
+                           |
+        +------------------+------------------+
+        |                                     |
+ Authentication                    AI Optimization Engine
+ JWT + RBAC                     Recommendation Service
+        |                                     |
+        +------------------+------------------+
+                           |
+                     PostgreSQL Database
+                           |
+                  Docker Containerized
 ```
 
-## Option B — Use local PostgreSQL
+---
 
-Create a database named:
+# Tech Stack
+
+- Python 3.12
+- FastAPI
+- PostgreSQL
+- SQLAlchemy ORM
+- Docker
+- JWT Authentication
+- Role Based Access Control (RBAC)
+- Pydantic
+- Swagger/OpenAPI
+- Pytest
+
+---
+
+# Features
+
+## Phase 1
+
+- Enterprise AI Model Catalog
+- FastAPI REST APIs
+- AI Model Selection Logic
+- Request Validation
+- Business Rules Engine
+
+---
+
+## Phase 2
+
+- Interactive Dashboard
+- Optimization APIs
+- HTML/CSS/JavaScript Frontend
+- Charts & Visualizations
+- Enterprise UI
+
+---
+
+## Phase 3
+
+- PostgreSQL Integration
+- SQLAlchemy ORM
+- Docker Compose
+- CRUD Operations
+- Optimization History
+- Persistent Storage
+
+---
+
+## Phase 4A
+
+- JWT Authentication
+- User Registration
+- Secure Login
+- OAuth2 Password Flow
+- Role-Based Access Control
+- Protected APIs
+- Admin Authorization
+
+---
+
+## Phase 4B (In Progress)
+
+- AI Recommendation Assistant
+- Intelligent Model Ranking
+- Natural Language Queries
+- Enterprise Recommendation Engine
+
+---
+
+# Project Structure
 
 ```text
-model_optimizer
+app/
+│
+├── api/
+├── auth/
+├── core/
+├── crud/
+├── database/
+├── schemas/
+├── services/
+├── static/
+├── templates/
+└── main.py
+
+tests/
+
+docker-compose.yml
+requirements.txt
+README.md
 ```
 
-Default development connection:
+---
 
-```text
-postgresql+psycopg2://postgres:postgres@localhost:5432/model_optimizer
+# Authentication
+
+JWT Authentication
+Protected APIs
+OAuth2 Password Flow
+Role-Based Authorization
+Admin/User Roles
+
+---
+
+# Database
+
+PostgreSQL
+SQLAlchemy ORM
+UUID Primary Keys
+Optimization History
+User Management
+AI Model Catalog
+
+---
+
+# API Documentation
+
+```
+http://localhost:8000/docs
 ```
 
-Change `DATABASE_URL` in `.env` if your PostgreSQL password is different.
+Swagger UI
 
-## Installation
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements-dev.txt
-Copy-Item .env.example .env
+```
+http://localhost:8000/redoc
 ```
 
-## Seed database
+ReDoc
 
-```powershell
-python -m app.database.seed
+---
+
+# Running the Project
+
+```bash
+git clone <repo>
+
+cd enterprise-ai-model-selection-optimizer
+
+docker-compose up -d
+
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
 ```
 
-Expected output:
+---
 
-```text
-Database seed completed. Added 5 model(s).
-```
+# Future Enhancements
 
-## Run
+- Retrieval-Augmented Generation (RAG)
+- Vector Database
+- Redis Caching
+- CI/CD
+- Kubernetes Deployment
+- LLM Integration
+- Multi-Agent AI
+- Monitoring & Observability
 
-```powershell
-python -m uvicorn app.main:app --reload
-```
+---
 
-Open:
+# Author
 
-- Dashboard: http://127.0.0.1:8000/
-- Swagger: http://127.0.0.1:8000/docs
-- Health: http://127.0.0.1:8000/health
+**Girish Gopal Reddy Vuyyuru**
 
-## New Phase 3 APIs
-
-- `GET /api/v1/models`
-- `POST /api/v1/models`
-- `GET /api/v1/models/{model_id}`
-- `PUT /api/v1/models/{model_id}`
-- `DELETE /api/v1/models/{model_id}`
-- `GET /api/v1/history`
-- `POST /api/v1/select-model`
+AI / ML Engineer
+Generative AI Engineer
+Python Backend Engineer
