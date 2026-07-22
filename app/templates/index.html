@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>
+          <h1>ModelOps</h1>
+          <p>Selection Optimizer</p>
+        </div>
+      </div>
+
+      <nav>
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#recommendations">Recommendations</a>
+        <a href="#analytics">Analytics</a>
+        <a href="/docs" target="_blank">API Docs</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Phase 2</strong>
+        <span>Enterprise dashboard is active.</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Enterprise AI Decision Platform</p>
+          <h2>AI Model Selection Optimizer</h2>
+          <p class="subheading">Compare candidate models across quality, cost, latency, context, privacy, and deployment constraints.</p>
+        </div>
+        <div class="status-pill"><span></span> API Online</div>
+      </header>
+
+      <section id="dashboard" class="grid">
+        <article class="panel form-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Configuration</p>
+              <h3>Selection Requirements</h3>
+            </div>
+          </div>
+
+          <form id="optimizer-form">
+            <div class="form-grid">
+              <label>
+                Use case
+                <select id="use-case">
+                  <option value="rag">RAG</option>
+                  <option value="chatbot">Chatbot</option>
+                  <option value="coding">Coding</option>
+                  <option value="summarization">Summarization</option>
+                  <option value="agents">Agentic AI</option>
+                </select>
+              </label>
+
+              <label>
+                Deployment
+                <select id="deployment">
+                  <option value="either">Either</option>
+                  <option value="cloud">Cloud</option>
+                  <option value="local">Local</option>
+                </select>
+              </label>
+
+              <label>
+                Max cost / 1M tokens
+                <input id="max-cost" type="number" value="15" min="0.1" step="0.1">
+              </label>
+
+              <label>
+                Max latency (ms)
+                <input id="max-latency" type="number" value="1500" min="1">
+              </label>
+
+              <label>
+                Minimum context tokens
+                <input id="min-context" type="number" value="32000" min="1">
+              </label>
+
+              <label>
+                Number of recommendations
+                <input id="top-n" type="number" value="3" min="1" max="5">
+              </label>
+            </div>
+
+            <label class="checkbox-row">
+              <input id="privacy-required" type="checkbox">
+              <span>
+                <strong>Strict privacy requirement</strong>
+                <small>Only include models with high privacy scores.</small>
+              </span>
+            </label>
+
+            <div class="weights">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Optimization priorities</p>
+                  <h3>Criteria Weights</h3>
+                </div>
+                <strong id="weight-total">100%</strong>
+              </div>
+
+              <div class="weight-row">
+                <label>Quality <span id="quality-value">35%</span></label>
+                <input class="weight-input" id="quality-weight" type="range" min="0" max="100" value="35">
+              </div>
+              <div class="weight-row">
+                <label>Cost <span id="cost-value">25%</span></label>
+                <input class="weight-input" id="cost-weight" type="range" min="0" max="100" value="25">
+              </div>
+              <div class="weight-row">
+                <label>Latency <span id="latency-value">20%</span></label>
+                <input class="weight-input" id="latency-weight" type="range" min="0" max="100" value="20">
+              </div>
+              <div class="weight-row">
+                <label>Context <span id="context-value">10%</span></label>
+                <input class="weight-input" id="context-weight" type="range" min="0" max="100" value="10">
+              </div>
+              <div class="weight-row">
+                <label>Privacy <span id="privacy-value">10%</span></label>
+                <input class="weight-input" id="privacy-weight" type="range" min="0" max="100" value="10">
+              </div>
+            </div>
+
+            <button id="submit-button" type="submit">Recommend Best Models</button>
+            <p id="form-error" class="error"></p>
+          </form>
+        </article>
+
+        <section class="summary-column">
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Evaluated</span>
+              <strong id="evaluated-count">—</strong>
+              <small>Models in catalog</small>
+            </article>
+            <article class="metric-card">
+              <span>Eligible</span>
+              <strong id="eligible-count">—</strong>
+              <small>Models meeting constraints</small>
+            </article>
+            <article class="metric-card">
+              <span>Best score</span>
+              <strong id="best-score">—</strong>
+              <small>Weighted optimization</small>
+            </article>
+          </div>
+
+          <article id="recommendations" class="panel results-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Ranked results</p>
+                <h3>Recommendations</h3>
+              </div>
+            </div>
+            <div id="results-empty" class="empty-state">
+              Submit your requirements to generate ranked model recommendations.
+            </div>
+            <div id="results"></div>
+          </article>
+        </section>
+      </section>
+
+      <section id="analytics" class="analytics-grid">
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Comparison</p>
+              <h3>Score Breakdown</h3>
+            </div>
+          </div>
+          <canvas id="score-chart"></canvas>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Trade-offs</p>
+              <h3>Cost vs. Latency</h3>
+            </div>
+          </div>
+          <canvas id="tradeoff-chart"></canvas>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
