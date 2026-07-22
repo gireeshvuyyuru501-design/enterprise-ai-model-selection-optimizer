@@ -1,6 +1,37 @@
 # 🚀 Enterprise AI Model Selection Optimizer
 
+![Python](https://img.shields.io/badge/Python-3.12-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue) ![Docker](https://img.shields.io/badge/Docker-Containerized-blue) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![License](https://img.shields.io/badge/License-MIT-green)
+
 An enterprise-grade AI platform that intelligently recommends the best Large Language Model (LLM) for enterprise workloads using multiple optimization criteria including cost, latency, quality, privacy, deployment strategy, and business requirements.
+
+---
+
+## 🌟 Project Highlights
+
+- Enterprise-grade AI Model Selection Platform
+- FastAPI REST API Architecture
+- PostgreSQL + SQLAlchemy ORM
+- JWT Authentication & Role-Based Access Control (RBAC)
+- Dockerized Development Environment
+- AI Recommendation Engine
+- Interactive Dashboard
+- Swagger/OpenAPI Documentation
+- Enterprise Project Structure
+
+---
+
+## Why This Project?
+
+Selecting an enterprise AI model involves balancing:
+
+- Cost
+- Accuracy
+- Latency
+- Context Window
+- Privacy
+- Deployment Strategy
+
+This platform evaluates these factors and recommends the most suitable model for enterprise workloads.
 
 ---
 
@@ -27,20 +58,59 @@ An enterprise-grade AI platform that intelligently recommends the best Large Lan
                   Docker Containerized
 ```
 
+## Enterprise Architecture Layers
+
+```
+Frontend Layer
+      ↓
+FastAPI REST API Layer
+      ↓
+Authentication Layer
+      ↓
+Business Logic Layer
+      ↓
+Recommendation Engine
+      ↓
+Database Layer
+      ↓
+PostgreSQL
+```
+
 ---
 
 # Tech Stack
 
-- Python 3.12
+## Backend
+
+- Python
 - FastAPI
+- SQLAlchemy
+- Pydantic
+
+## Database
+
 - PostgreSQL
 - SQLAlchemy ORM
-- Docker
+
+## Security
+
 - JWT Authentication
-- Role Based Access Control (RBAC)
-- Pydantic
-- Swagger/OpenAPI
+- OAuth2
+- RBAC
+
+## DevOps
+
+- Docker
+- Docker Compose
+
+## Testing
+
 - Pytest
+
+## Documentation
+
+- Swagger
+- OpenAPI
 
 ---
 
@@ -98,6 +168,49 @@ An enterprise-grade AI platform that intelligently recommends the best Large Lan
 
 ---
 
+# 📸 Screenshots
+
+## Swagger API
+
+(Add Screenshot)
+
+## Dashboard
+
+(Add Screenshot)
+
+## Authentication
+
+(Add Screenshot)
+
+---
+
+# REST APIs
+
+## Authentication
+
+```
+POST /api/v1/auth/register
+POST /api/v1/auth/login
+GET  /api/v1/auth/me
+GET  /api/v1/auth/admin-check
+```
+
+## Optimization
+
+```
+POST /optimize
+GET  /models
+GET  /history
+```
+
+## Assistant
+
+```
+POST /assistant/recommend
+```
+
+---
+
 # Project Structure
 
 ```text
@@ -125,22 +238,22 @@ README.md
 
 # Authentication
 
-JWT Authentication
-Protected APIs
-OAuth2 Password Flow
-Role-Based Authorization
-Admin/User Roles
+- JWT Authentication
+- Protected APIs
+- OAuth2 Password Flow
+- Role-Based Authorization
+- Admin/User Roles
 
 ---
 
 # Database
 
-PostgreSQL
-SQLAlchemy ORM
-UUID Primary Keys
-Optimization History
-User Management
-AI Model Catalog
+- PostgreSQL
+- SQLAlchemy ORM
+- UUID Primary Keys
+- Optimization History
+- User Management
+- AI Model Catalog
 
 ---
 
@@ -176,23 +289,56 @@ uvicorn app.main:app --reload
 
 ---
 
-# Future Enhancements
+# Roadmap / Future Enhancements
 
 - Retrieval-Augmented Generation (RAG)
 - Vector Database
 - Redis Caching
-- CI/CD
-- Kubernetes Deployment
-- LLM Integration
+- LangChain
+- LangGraph
 - Multi-Agent AI
-- Monitoring & Observability
+- Kubernetes Deployment
+- GitHub Actions CI/CD
+- Prometheus
+- Grafana
 
 ---
 
-# Author
+# Skills Demonstrated
+
+- Backend Development
+- REST API Design
+- Authentication
+- PostgreSQL
+- Docker
+- SQLAlchemy
+- Enterprise Architecture
+- Python
+- FastAPI
+- JWT
+- RBAC
+
+---
+
+# 👨‍💻 Author
 
 **Girish Gopal Reddy Vuyyuru**
 
-AI / ML Engineer
-Generative AI Engineer
-Python Backend Engineer
+AI/ML Engineer | Generative AI Engineer | Python Backend Engineer
+
+- GitHub: https://github.com/gireeshvuyyuru501-design
+- LinkedIn: https://www.linkedin.com/in/girish-genai-engineer
+
+---
+
+# License
+
+MIT License
+
+---
+
+## Repository
+
+⭐ Star the repository if you found it useful.
+
+Contributions and suggestions are welcome.
