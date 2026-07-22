@@ -15,3 +15,17 @@ dist/
 build/
 htmlcov/
 .coverage
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets
+.env
+
+# IDE
+.idea/
+.vscode/
