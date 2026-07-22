@@ -76,6 +76,23 @@ Database Layer
 PostgreSQL
 ```
 
+## 🏗 Enterprise Architecture (Diagram)
+
+```mermaid
+flowchart TD
+A[Frontend Dashboard<br/>HTML CSS JavaScript]
+A --> B[FastAPI REST API]
+B --> C[JWT Authentication]
+C --> D[RBAC Authorization]
+D --> E[Optimization Engine]
+E --> F[AI Recommendation Service]
+E --> G[Business Rules Engine]
+F --> H[(PostgreSQL)]
+G --> H
+H --> I[SQLAlchemy ORM]
+I --> J[Docker Container]
+```
+
 ---
 
 # Tech Stack
@@ -168,19 +185,107 @@ PostgreSQL
 
 ---
 
-# 📸 Screenshots
+# 📸 Application Screenshots
 
-## Swagger API
+## Swagger API Documentation
 
-(Add Screenshot)
+![Swagger API](images/swagger.png)
 
-## Dashboard
+---
 
-(Add Screenshot)
+## Enterprise Dashboard
 
-## Authentication
+![Dashboard](images/dashboard.png)
 
-(Add Screenshot)
+---
+
+## JWT Authentication
+
+![Authentication](images/auth.png)
+
+---
+
+## PostgreSQL Database
+
+![Database](images/database.png)
+
+---
+
+# 🔌 Sample API Responses
+
+## Register
+
+Request
+
+```
+POST /api/v1/auth/register
+```
+
+```json
+{
+  "username": "girish",
+  "email": "girish@example.com",
+  "password": "Password123"
+}
+```
+
+Response
+
+```json
+{
+  "id": "uuid",
+  "username": "girish",
+  "email": "girish@example.com",
+  "role": "user"
+}
+```
+
+## Login
+
+```
+POST /api/v1/auth/login
+```
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "token_type": "bearer"
+}
+```
+
+## Optimize
+
+```
+POST /optimize
+```
+
+```json
+{
+  "use_case": "RAG",
+  "recommended_model": "GPT-4o",
+  "provider": "OpenAI",
+  "score": 95.6,
+  "reason": "Best balance of cost, latency and quality."
+}
+```
+
+## AI Recommendation
+
+```
+POST /api/v1/assistant/recommend
+```
+
+```json
+{
+  "question": "Recommend an inexpensive model for customer support",
+  "recommendation": {
+    "name": "GPT-4o-mini",
+    "provider": "OpenAI",
+    "score": 91.2
+  },
+  "answer": "GPT-4o-mini is recommended because..."
+}
+```
 
 ---
 
@@ -208,6 +313,21 @@ GET  /history
 ```
 POST /assistant/recommend
 ```
+
+---
+
+# 📅 Project Timeline
+
+| Phase | Status | Description |
+|--------|--------|-------------|
+| Phase 1 | ✅ Completed | Enterprise AI Model Selection Engine |
+| Phase 2 | ✅ Completed | Dashboard, APIs & Frontend |
+| Phase 3 | ✅ Completed | PostgreSQL, SQLAlchemy & Docker |
+| Phase 4A | ✅ Completed | JWT Authentication & RBAC |
+| Phase 4B | 🚧 In Progress | AI Recommendation Assistant |
+| Phase 4C | 🔜 Planned | RAG & Vector Database |
+| Phase 4D | 🔜 Planned | Redis & Performance |
+| Phase 4E | 🔜 Planned | CI/CD & Kubernetes |
 
 ---
 
@@ -273,6 +393,18 @@ ReDoc
 
 ---
 
+# 🚀 Demo
+
+## API Documentation
+
+http://localhost:8000/docs
+
+## ReDoc
+
+http://localhost:8000/redoc
+
+---
+
 # Running the Project
 
 ```bash
@@ -289,34 +421,41 @@ uvicorn app.main:app --reload
 
 ---
 
-# Roadmap / Future Enhancements
+# 🗺 Roadmap
 
-- Retrieval-Augmented Generation (RAG)
-- Vector Database
-- Redis Caching
-- LangChain
-- LangGraph
-- Multi-Agent AI
-- Kubernetes Deployment
-- GitHub Actions CI/CD
-- Prometheus
-- Grafana
+- [x] Phase 1
+- [x] Phase 2
+- [x] Phase 3
+- [x] Phase 4A
+- [ ] Phase 4B
+- [ ] RAG
+- [ ] LangChain
+- [ ] LangGraph
+- [ ] Redis
+- [ ] Kubernetes
+- [ ] CI/CD
+- [ ] Monitoring
+- [ ] Production Deployment
 
 ---
 
-# Skills Demonstrated
+# 💡 Skills Demonstrated
 
-- Backend Development
-- REST API Design
-- Authentication
-- PostgreSQL
-- Docker
-- SQLAlchemy
-- Enterprise Architecture
 - Python
 - FastAPI
-- JWT
+- PostgreSQL
+- SQLAlchemy
+- Docker
+- JWT Authentication
 - RBAC
+- REST APIs
+- Enterprise Backend Development
+- AI Optimization
+- Business Rule Engines
+- Pydantic
+- Swagger
+- OpenAPI
+- Testing with Pytest
 
 ---
 
@@ -337,8 +476,8 @@ MIT License
 
 ---
 
-## Repository
+⭐ If you found this project useful, please consider starring the repository.
 
-⭐ Star the repository if you found it useful.
+Contributions, issues and feature requests are welcome.
 
-Contributions and suggestions are welcome.
+Made with ❤️ by **Girish Gopal Reddy Vuyyuru**
